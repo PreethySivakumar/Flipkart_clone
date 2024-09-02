@@ -1,0 +1,101 @@
+<!-- row with brand name -->
+<div class="container-fluid">
+  <div class="row p-3">
+    <div class="col-sm-12 col-md-4 col-lg-2 me-1 bg-body">
+      <h5 class="m-2">Filters</h5>
+      <hr />
+      <p>CATEGORIES</p>
+      <hr />
+      <p>PRICE</p>
+      <div>
+        <input type="range" class="form-range" min="0" max="1800" id="customRange2">
+      </div>
+      <p>BRAND</p>
+      <div *ngFor="let product of getuniqueBrand()">
+        <input type="checkbox" [value]="product.brand" (change)="onBrandChange(product.brand,$event)" />{{product}}
+      </div>
+
+    </div>
+
+    <!-- search product display -->
+    <div class="col bg-body ms-3">
+      <div *ngIf="searchDisplay">
+        <div *ngFor="let product of searchproducts" class="row w-100 mobProduct">
+          <div class="col-lg-6 mt-3 mb-3">
+            <img class="card-img-top" [src]="product.src" (click)="viewProduct(product.productId)" class="card-img-top"
+              alt="{{ product.model }}">
+          </div>
+
+          <div class="col-lg-6 mb-3 mt-3">
+            <h4>{{ product.model }}</h4>
+            <h6><span class="badge bg-success">
+                {{product.star}}
+              </span><i class="fa fa-star ms-1 mt-1" aria-hidden="true"></i></h6>
+            <p>5K+ bought this last month</p>
+            <span>
+
+              <h4><s>{{product.offerprice}}</s>Price: {{ product.price | currency:'INR' }}</h4>
+            </span>
+            <p class="lh-1">Save extra with No cost EMI</p>
+            <p>FREE DELIVERY</p>
+          </div>
+        </div>
+      </div>
+
+      <!--if not search and condition to display based on categoryname  -->
+      <div *ngIf="!searchDisplay">
+        <div class="row">
+          <ng-container *ngFor="let product of products">
+            <ng-container [ngTemplateOutlet]="product.categoryName == 'mobile' ? gridView : cardView"
+              [ngTemplateOutletContext]="{product:product}"></ng-container>
+          </ng-container>
+        </div>
+      </div>
+
+      <!--mobile products display  -->
+      <ng-template #gridView let-product="product">
+        <div *ngIf="productDisplay">
+          <div class="row mobProduct">
+            <div class="col-lg-3 mt-3 mb-3">
+              <img class="" [src]="product.src" (click)="viewProduct(product.productId)" class="card-img-top"
+                alt="{{ product.model }}">
+            </div>
+            <div class="col-lg-5 mb-3 mt-3">
+              <h5 class="fontDisplay fw-semibold productName">{{ product.model }}</h5>
+              <h6 class="badge bg-success">
+                {{product.star}}<span>
+                </span></h6>
+              <div *ngFor="let describe of product.description">
+                <li class="fontList">{{describe.feature}}</li>
+              </div>
+            </div>
+            <div class="col-lg-4 mb-3 mt-3">
+              <span>
+                <h4>{{ product.price | currency:'INR' }}</h4>
+              </span>
+              <p class="mb-1"><s>{{product.offerprice |currency:'INR'}}</s></p>
+              <p class="mb-1 fontList">{{product.offer}}</p>
+              <p class="mt-1 fontList">{{product.delivery}}</p>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+
+      <!-- other products display -->
+      <ng-template #cardView let-product="product">
+        <div class="col-lg-3 col-sm-6 col-md-4 mt-3 mb-3 p-0">
+          <div class="card px-3 h-100 m-0">
+            <img class="img-fluid w-100" [src]="product.src" (click)="viewProduct(product.productId)" class="card-img-top"
+              alt="{{ product.model }}">
+            <div class="card-body">
+              <h6 class="fs-bold text-secondary mb-0">{{product.brand}}</h6>
+              <p class="productfontList mb-0" (click)="viewProduct(product.productId)">{{ product.model }}
+                {{product.productColor}}</p>
+              <span>
+                <h6>{{ product.price | currency:'INR' }} <s class="text-secondary">{{ product.offerprice | currency:'INR'}}</s> </h6>
+              </span>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>

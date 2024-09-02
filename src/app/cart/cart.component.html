@@ -1,0 +1,121 @@
+<div class="container-fluid  bg-light">
+  <div *ngIf="cartItems.length > 0; else noItems">
+    <div >
+      <div class="row p-3">
+        <div class="col-lg-8 me-1 bg-body mt-3 ">
+          <div class="row" *ngFor="let item of cartItems">
+            <div class="col-lg-4 mb-5 mt-2">
+              <img [src]="item.src" class="img-fluid h-100 w-75" alt="{{ item.model }}">
+            </div>
+            <div class="col-lg-4">
+              <p class="fs-5">{{ item.model }}{{item.productColor}}</p>
+              <p class="fw-bold"><s class="text-secondary">{{item.offerprice}}</s>  {{ item.price | currency:'INR' }}</p>
+            <div class="quantity-controls">
+              <button class="btn btn-outline-secondary mx-1" (click)="decreaseQuantity(item.productId)">-</button>
+              <span class="btn btn-outline-secondary mx-1">{{ item.quantity }}</span>
+              <button class="btn btn-outline-secondary me-5" (click)="increaseQuantity(item.productId)">+</button>
+              <span class="removebtn mt-2" (click)="removeFromCart(item.productId)">Remove</span>
+            </div>
+            </div>
+          </div>
+          <hr/>
+        </div>
+        <div class="col ms-2 bg-body mt-3">
+          <p class="fw-bold text-secondary">PRICE DETAILS</p>
+          <p>Price(items) <span>{{offprice | currency:'INR'}}</span></p>
+          <p>Discount  <span class="text-success">{{price}}</span></p>
+          <p>Delivery Charges <span class="text-success">Free</span></p>
+          <hr/>
+          <h5>Total Amount <span>{{cartTotal | currency:'INR'}}</span></h5>
+          <hr/>
+          <p class="text-success fs-6 fw-bold">You will save {{price|currency:'INR'}} on this order</p>
+        </div>
+        <p class="text-secondary">Safe and Secure Payments.Easy returns.100% Authentic products.</p>
+      </div>
+    </div>
+  </div>
+  <ng-template #noItems>
+    <div class="col-12 bg-body">
+      <img src="assets/cart.webp" class="h-25 w-25 m-5 d-block mx-auto"/>
+      <p class="fs-5 text-center">Missing cart items?</p>
+    </div>
+  </ng-template>
+</div>
+<!-- <div class="container">
+  <h1>Shopping Cart</h1>
+    <div *ngIf="cartItems.length>0">
+      <div *ngFor="let item of cartItems">
+        <div class="row">
+      
+            <div class="col-lg-9 bg-body">
+              <div *ngFor="let product of cartItems">
+                <div *ngIf="product.categoryId==1; else noItems" class="row" >
+                  <div  class="col-lg-4 mt-3 mb-3">
+                    <img [src]="item.src" class="img-fluid" alt="{{ item.model }}">
+                  </div>
+                  <div  class="col-lg-4 mb-3 mt-3">
+                    <h4>{{ product.model }}</h4>
+                    <h6><span class="badge bg-success">
+                      {{product.star}}<i class="fa fa-star" aria-hidden="true"></i>
+                    </span></h6>
+                    <li>{{product.Desc1}}</li>
+                    <li>{{product.Desc2}}</li>
+                    <li>{{product.Desc3}}</li>
+                  </div>
+                  <div class="col-lg-3 mb-3 mt-3">
+                    <span>
+                      <h4>Price: {{ product.price | currency:'INR' }}</h4>
+                    </span>
+                    <p>This product is from <strong>{{product.brand}}</strong></p>
+                    <p>{{product.offer}}</p>
+                    <p><i>FREE DELIVERY</i></p>
+                  </div>            
+      </div>
+      <ng-template #noItems>
+        <p>Your cart is empty.</p>
+      </ng-template>
+    </div>   
+    
+</div>
+
+
+<div class="container">
+    <h1>Shopping Cart</h1>
+    <div *ngIf="cartItems.length > 0; else noItems">
+      <div class="row">
+        <div *ngFor="let item of cartItems">
+          <div class="col-lg-8">
+            <div class="col-lg-3">
+              <img [src]="item.src" class="img-fluid" alt="{{ item.model }}">
+            </div>
+            <div class="col-lg-4">
+              <h2>{{ item.model }}</h2>
+            </div>
+        </div>
+       
+           <div class="col-lg-3">
+            <img [src]="item.src" class="img-fluid" alt="{{ item.model }}">
+          </div>
+          <div class="col-lg-4">
+            <h2>{{ item.model }}</h2>
+            <p>Price: {{ item.price | currency:'INR' }}</p>
+            <div class="quantity-controls">
+              <button class="btn btn-outline-secondary mx-1" (click)="decreaseQuantity(item.productId)">-</button>
+              <span class="btn btn-outline-secondary mx-1">{{ item.quantity }}</span>
+              <button class="btn btn-outline-secondary" (click)="increaseQuantity(item.productId)">+</button>
+            </div>
+            <button class="btn btn-danger mt-2" (click)="removeFromCart(item.productId)">Remove</button>
+          </div>
+          
+
+        </div>
+        <div class="col-lg-4 bg-body">
+           <h2>Total Amount: {{ cartTotal | currency:'INR' }}</h2> 
+          <hr>
+        </div>
+      </div>
+    </div>
+    <ng-template #noItems>
+      <p>Your cart is empty.</p>
+    </ng-template>
+  </div>  -->

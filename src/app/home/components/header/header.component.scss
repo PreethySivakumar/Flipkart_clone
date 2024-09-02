@@ -1,0 +1,27 @@
+a{
+    color:blue;
+}
+span{
+    color:gold;
+}
+.login{
+    transition: background-color 0.3s;
+}
+.login:hover{
+    background-color:rgb(62, 62, 248);
+}
+.navbar-white,button{
+    background-color: white;
+    color:black;
+}
+.navbar-blue{
+    background-color: rgb(44, 44, 238);
+    color:blue;
+}
+.navbar-blue .navbar-brand{
+    color:white;
+}
+.search{
+    width:25rem;
+    border-radius:0;
+}

@@ -1,0 +1,31 @@
+<div *ngIf="product">
+    <div class="container-fluid bg-light">
+        <div class="row cart">
+            <div class="col-sm-12 col-md-12 col-lg-5 productDetail bg-body">
+                <img class="img-fluid w-75 h-75 mt-3 mx-5" [src]="product.src" alt="{{ product.model }}">
+                <button type="button" class="btn addbtn btn-lg mx-2 mt-3 align-items-center text-light" (click)="cart()"><i class="fa fa-cart-plus" aria-hidden="true"></i>ADD TO CART</button>
+                <button type="button" class="btn buybtn btn-lg mx-2 mt-3 align-items-center w-lg-50 text-light" ><i class="fa fa-bolt" aria-hidden="true"></i>BUY NOW</button>
+            </div>
+            <div class="col-sm-12 col-lg-7 bg-body ">
+              <h6 class="fs-bold text-secondary mb-0 text-uppercase mt-3">{{product.brand}}</h6>
+                <p class="fs-6">{{ product.model }}  {{product.productColor}}</p>
+                <span>
+                    <p class="fs-4 fw-bold ">{{ product.price | currency:'INR' }} <s class="text-secondary fs-6 fw-normal">{{ product.offerprice | currency:'INR'}}</s> </p>
+                </span>
+                <span class="badge bg-success">{{product.star}}<i class="fa fa-star ms-1 mt-1" aria-hidden="true"></i></span>
+                <div class="d-flex" *ngIf="product.categoryId==3 && 2">
+                    <div *ngFor="let size of product.size">
+                        <span class="d-inline-block border rounded p-2 m-2">{{size}}</span>
+                    </div>
+                    <!-- <span><p>Size</p> <span>26</span>&nbsp;&nbsp;<span>28</span>&nbsp;&nbsp;<span>30</span>&nbsp;&nbsp;<span>32</span>&nbsp;&nbsp;<span>34</span>&nbsp;&nbsp;</span> -->
+                </div>
+                <p class="fw-bold text-dark">Available offers</p>
+                <div *ngFor="let item of product.bankoffer">
+                    <li><i class="fa fa-tag" aria-hidden="true"></i>{{item.bankoff}}</li>
+                </div>
+                <p class="text-primary fw-bold fs-6 moredetail">view 11 more offers</p>
+            </div>
+        </div>
+    </div>
+  </div>
+  

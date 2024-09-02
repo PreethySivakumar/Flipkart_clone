@@ -1,0 +1,46 @@
+*{
+    font-family:"Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.productName:hover{
+    color:blue;
+    cursor: pointer;
+}
+.card-img-top{
+    cursor: pointer;
+    background-color: white;
+    max-height:15rem;
+    max-width:17rem;
+}
+.card{
+    border:none;
+}
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.card img{
+    height:20rem;
+}
+.custom-height{
+    max-height:10rem;
+}
+// .mobProduct:hover{
+//     box-shadow:0 6px 16px rgb(205, 200, 200);
+// }
+.custom-gap{
+    margin-left:15px;
+}
+.fontList{
+    font-size: 14px;
+}
+.productfontList{
+    font-size: 16px;
+}
+.card:hover .card-body{
+    transform:translateY(-20%);
+    background-color: rgba(255,255,255,0.9);
+    transition:all 0.5s ease;
+}
+.badge{
+    border-radius: 0;
+}
