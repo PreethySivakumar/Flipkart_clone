@@ -42,7 +42,15 @@ const routes: Routes = [
     path:'electronics',
     component:ProductComponent
   }
+  // {
+  //   path:'product/:id',
+  //   component:ProductDetailComponent
+  // },
   
+  // { 
+  //   path: 'products', 
+  //   component: ProductComponent
+  // }
 ];
 
 @NgModule({

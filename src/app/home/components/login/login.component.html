@@ -16,7 +16,7 @@
                 name="password" [(ngModel)]="password" required>
             </form>
             <p class="policy mt-5 text-secondary">By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.</p>
-            <button class="btn btn-lg w-100 loginbtn">Login</button>
+            <button class="btn btn-lg w-100 loginbtn" (click)="onSubmit()">Login</button>
             <button type="button" class="btn btn-danger mt-2 mx-3" (click)="hideLoginForm()">Close</button>
             <p class="createAcc text-primary text-center">New to Flipkart? Create an account</p>
         </div>
