@@ -55,8 +55,7 @@ export class ProductComponent implements OnInit {
       this.performSearch(this.searchQuery);
     })
   }
-
-  //search method 
+ 
   private performSearch(query:string){
     if(query.trim()){
       this.dataService.searchProducts(query).subscribe(res=>{

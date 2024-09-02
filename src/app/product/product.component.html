@@ -1,4 +1,4 @@
-<!-- row with brand name -->
+
 <div class="container-fluid">
   <div class="row p-3">
     <div class="col-sm-12 col-md-4 col-lg-2 me-1 bg-body">
@@ -17,7 +17,6 @@
 
     </div>
 
-    <!-- search product display -->
     <div class="col bg-body ms-3">
       <div *ngIf="searchDisplay">
         <div *ngFor="let product of searchproducts" class="row w-100 mobProduct">
@@ -41,8 +40,6 @@
           </div>
         </div>
       </div>
-
-      <!--if not search and condition to display based on categoryname  -->
       <div *ngIf="!searchDisplay">
         <div class="row">
           <ng-container *ngFor="let product of products">
@@ -52,7 +49,7 @@
         </div>
       </div>
 
-      <!--mobile products display  -->
+     
       <ng-template #gridView let-product="product">
         <div *ngIf="productDisplay">
           <div class="row mobProduct">
@@ -81,7 +78,7 @@
         </div>
       </ng-template>
 
-      <!-- other products display -->
+     
       <ng-template #cardView let-product="product">
         <div class="col-lg-3 col-sm-6 col-md-4 mt-3 mb-3 p-0">
           <div class="card px-3 h-100 m-0">

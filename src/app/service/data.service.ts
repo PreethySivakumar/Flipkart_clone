@@ -16,8 +16,7 @@ export class DataService {
 
   private searchSubject = new BehaviorSubject<string>('');
   searchQuery$ = this.searchSubject.asObservable();
-  // private cartItems = new BehaviorSubject<cartItem[]>([]);
-  // cartItem$ = this.cartItems.asObservable();
+
   private data = [
     { categoryId: 1, categoryName: 'mobile', productId: 101, brand: 'Apple', model: 'iPhone 15 Pro Max 128GB', price: 87273, offerprice: 93045, src: 'assets/mob-one.jpg', review: 'Over 3K+ bought this last month',star:4.4,delivery:'free delivery',emi:'save with No cost EMI', productColor: 'Ice Blue', offer: 'Upto 42,000 off on exchange', pageOneDesc: 'Grab now',description:[{feature: '128GB ROM'},{ feature: '15.49cm (6.1inch) super Retina XDR Display'},{ feature: '48MP + 12MP Front Camera'},{ feature: 'A16 Bionic Chip,6 core Processor'},{ feature: '1 Year Warranty for phone and 6 Months Warranty for In-Box Accessories'}],bankoffer:[{bankoff: 'Bank Offer1% Upto 2030 Off On Net Banking Transactions'}, {bankoff: 'Bank Offer1% Upto ₹2030 off on UPI Transactions'}, {bankoff: 'Special PriceGet extra ₹9101 off (price inclusive of cashback/coupon)'}] },
     { categoryId: 1, categoryName: 'mobile', productId: 102, brand: 'Apple', model: 'iPhone 14 Plus 128GB', price: 67273, offerprice: 74045, src: 'assets/mob-two.jpg', review: 'Over 4K+ bought this last month',star:4.2,delivery:'free delivery',emi:'save with No cost EMI', productColor: 'Matte Black', offer: 'Save extra with combo offer',description:[{feature: '128GB ROM'},{ feature: '17.02cm (6.7inch) super Retina XDR Display'},{ feature: '12MP + 12MP Front Camera'}, {feature: 'A15 Bionic Chip,6 core Processor'}, {feature: '1 Year Warranty for phone and 6 Months Warranty for In-Box Accessories'}] ,bankoffer:[{bankoff: 'Bank Offer1% Upto 2030 Off On Net Banking Transactions'}, {bankoff: 'Bank Offer3% Upto ₹2030 off on UPI Transactions'}, {bankoff: 'Special PriceGet inclusive of cashback/coupon)'}]},
@@ -70,14 +69,6 @@ export class DataService {
     return of(this.data.filter(item => item.categoryId === categoryId));
   }
 
-  // SearchItems(query: string): Observable<any[]> {
-  //   const lowerQuery = query.toLowerCase();
-  //   return of(this.data.filter(item =>
-  //     item.model.toLowerCase().includes(lowerQuery) ||
-  //     item.brand.toLowerCase().includes(lowerQuery)
-  //   ))
-  // }
-
   getProductById(productId: number): Observable<any> {
     const product = this.data.find(p => p.productId === productId);
     return of(product);
@@ -87,22 +78,6 @@ export class DataService {
     return of(this.data);
   }
 
-  // searchProducts(query:string):Observable<Product[]>{
-  //   const lowerQuery = query.toLowerCase();
-  //   return of(this.data).pipe(
-  //     map(products => products.filter (product =>
-  //       product.categoryName.toLowerCase().includes(lowerQuery) ||
-  //       product.brand.toLowerCase().includes(lowerQuery) ||
-  //       product.model.toLowerCase().includes(lowerQuery)
-  //     ))
-  //   );
-  // }
-
-  // setSearchQuery(query: string) {
-  //   console.log("in search service");
-  //   this.searchSubject.next(query);
-  // }
-
   searchProducts(query: string): Observable<any[]> {
     const filteredProducts = this.data.filter(product =>
       product.categoryName.toLowerCase().includes(query.toLowerCase()) ||
@@ -111,17 +86,4 @@ export class DataService {
     );
     return of(filteredProducts);
   }
-
-  //  getOneProduct(){
-  //   const seenCategory = new Set<number>;
-
-  //   return of(this.data.filter(product => {
-  //     if(!seenCategory.has(product.categoryId)){
-  //       seenCategory.add(product.categoryId);
-  //       return true;
-  //     }
-  //     return false;
-  //   }
-
-  // ))
 }

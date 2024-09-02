@@ -25,10 +25,6 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.dataservice.getProducts().subscribe(res=>{
-    //   this.productList = res;
-    // })
-
     // to show random products from data service
     this.dataservice.getProducts().subscribe(res =>{
       this.catList = res,
